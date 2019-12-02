@@ -1,0 +1,16 @@
+FeatureID	GoldSet MethodID Position	GoldSetMethodID	VSM GoldSetMethodID Rank - All Ranks	VSM GoldSetMethodID Rank - Best Rank
+1533473	1555	org.gjt.sp.jedit.EditPane.saveCaretInfo()	376	181
+	1556	org.gjt.sp.jedit.EditPane.loadCaretInfo()	181	
+1536064	2054	org.gjt.sp.jedit.GUIUtilities.requestFocus(Window,Component)	370	370
+1538051	2776	org.gjt.sp.jedit.jEdit.showMemoryDialog(View)	2	2
+	5012	org.gjt.sp.jedit.gui.StatusBar.propertiesChanged()	1805	
+	5015	org.gjt.sp.jedit.gui.StatusBar.statusUpdate(WorkThreadPool,int)	978	
+	5021	org.gjt.sp.jedit.gui.StatusBar.updateBufferStatus()	5716	
+	-1	org.gjt.sp.jedit.gui.StatusBar.MemoryStatus.getToolTipText()		
+	-1	org.gjt.sp.jedit.gui.StatusBar.MemoryStatus.paintComponent(Graphics)		
+1538702	2042	org.gjt.sp.jedit.GUIUtilities.loadGeometry(Window,Container,String)	871	1
+	2043	org.gjt.sp.jedit.GUIUtilities.loadGeometry(Window,String)	991	
+	2049	org.gjt.sp.jedit.GUIUtilities.saveGeometry(Window,String)	1170	
+	2050	org.gjt.sp.jedit.GUIUtilities.saveGeometry(Window,Container,String)	1019	
+	-1	org.gjt.sp.jedit.GUIUtilities.addSizeSaver(Window,String)		
+	-1	org.gjt.sp.jedit.GUIUtilities.addSizeSaver(Window,Container,String)		
