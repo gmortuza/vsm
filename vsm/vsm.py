@@ -13,6 +13,7 @@ class Vsm:
         self.method_line = None
         self.document_frequency = None
         self.inverse_document_frequency = None
+        self.tf_idf_wegihted_matrix = None
 
     def generate_term_documented_matrix(self):
         with open(self.method_file, "r") as method_file_open:
@@ -43,7 +44,7 @@ class Vsm:
         self.inverse_document_frequency = np.log(inverse_document_frequency)
 
     def generate_tf_idf_wegihted_matrix(self):
-        pass
+        self.tf_idf_wegihted_matrix = self.normalized_term_documented_matrix * self.inverse_document_frequency
 
     def generate_vector_from_query(self):
         pass
