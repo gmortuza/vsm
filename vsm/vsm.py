@@ -13,7 +13,7 @@ class Vsm:
         self.method_line = None
         self.document_frequency = None
         self.inverse_document_frequency = None
-        self.tf_idf_wegihted_matrix = None
+        self.tf_idf_weighted_matrix = None
 
     def generate_term_documented_matrix(self):
         with open(self.method_file, "r") as method_file_open:
@@ -43,11 +43,17 @@ class Vsm:
         inverse_document_frequency = np.full(len(self.terms), len(self.method_line)) / self.document_frequency
         self.inverse_document_frequency = np.log(inverse_document_frequency)
 
-    def generate_tf_idf_wegihted_matrix(self):
-        self.tf_idf_wegihted_matrix = self.normalized_term_documented_matrix * self.inverse_document_frequency
+    def generate_tf_idf_weighted_matrix(self):
+        self.tf_idf_weighted_matrix = self.normalized_term_documented_matrix * self.inverse_document_frequency
 
     def generate_vector_from_query(self):
-        pass
+        query_vector = np.zeros(len(self.terms)).astype(int)
+        with open(self.query_file, "r") as query_file_open:
+            query_content = [(line.rstrip()).split() for line in query_file_open]
+        for index, single_term in enumerate(self.terms):
+            for single_query_line in query_content:
+                if single_term in single_query_line:
+                    query_vector[index] += 1
 
     def compute_cosine_similarity(self):
         pass
@@ -62,5 +68,7 @@ if __name__ == '__main__':
     vsm.generate_term_documented_matrix()
     vsm.normalize_term_documented_matrix()
     vsm.compute_document_frequency()
+    vsm.compute_inverse_document_frequency()
+    vsm.generate_tf_idf_weighted_matrix()
     print("hi")
 
