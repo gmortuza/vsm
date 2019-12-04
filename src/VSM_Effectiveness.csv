@@ -108,7 +108,7 @@ FeatureID	GoldSet MethodID Position	GoldSetMethodID	VSM GoldSetMethodID Rank - A
 	-1	org.gjt.sp.jedit.textarea.JEditTextArea.collapseFold(int)		
 1542026	2825	org.gjt.sp.jedit.jEdit.MyFocusManager.postProcessKeyEvent(KeyEvent)	3275	3275
 1546200	4525	org.gjt.sp.jedit.menu.RecentFilesProvider.update(JMenu)	1	1
-1548902	-1	org.gjt.sp.jedit.TextUtilities.join(Collection,String)		653
+1548902	-1	org.gjt.sp.jedit.TextUtilities.join(Collection,String)		
 	5500	org.gjt.sp.jedit.TextUtilities.findWordStart(String,int,String,boolean,boolean)	4142	
 	5506	org.gjt.sp.jedit.TextUtilities.findWordEnd(String,int,String,boolean,boolean)	4143	
 	5509	org.gjt.sp.jedit.TextUtilities.getCharType(char,String)	3571	
@@ -140,7 +140,7 @@ FeatureID	GoldSet MethodID Position	GoldSetMethodID	VSM GoldSetMethodID Rank - A
 	5804	org.gjt.sp.jedit.browser.VFSBrowser.ActionHandler.actionPerformed(ActionEvent)	38	
 1571752	5260	org.gjt.sp.jedit.textarea.TextArea.userInput(char)	1237	88
 	5354	org.gjt.sp.jedit.textarea.TextArea.addExplicitFold(int,int,int,int)	88	
-1574587	-1	org.gjt.sp.jedit.buffer.JEditBuffer.getUndoManager()		1
+1574587	-1	org.gjt.sp.jedit.buffer.JEditBuffer.getUndoManager()		
 	2876	org.gjt.sp.jedit.buffer.JEditBuffer.setDirty(boolean)	18	
 	792	org.gjt.sp.jedit.bufferio.BufferSaveRequest.run()	83	
 	1527	org.gjt.sp.jedit.options.EditingOptionPane._init()	108	
@@ -171,7 +171,7 @@ FeatureID	GoldSet MethodID Position	GoldSetMethodID	VSM GoldSetMethodID Rank - A
 	769	org.gjt.sp.jedit.options.BufferOptionPane.ActionHandler.actionPerformed(ActionEvent)	4462	
 	1964	org.gjt.sp.jedit.options.GeneralOptionPane._init()	124	
 	1965	org.gjt.sp.jedit.options.GeneralOptionPane._save()	100	
-1584436	-1	org.gjt.sp.jedit.textarea.Anchor.preContentRemoved(int,int)		9223372036854775807
+1584436	-1	org.gjt.sp.jedit.textarea.Anchor.preContentRemoved(int,int)		
 1589360	5404	org.gjt.sp.jedit.textarea.TextAreaMouseHandler.doSingleClick(MouseEvent)	50	50
 	5409	org.gjt.sp.jedit.textarea.TextAreaMouseHandler.doSingleDrag(MouseEvent)	311	
 1593359	2431	org.gjt.sp.jedit.gui.InputHandler.processKeyEvent(KeyEvent,int,boolean)	75	75

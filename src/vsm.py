@@ -2,6 +2,8 @@ import numpy as np
 from functools import reduce
 import logging
 import sys
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+
 
 class Vsm:
     def __init__(self, input_file_dir):
@@ -31,10 +33,12 @@ class Vsm:
 
     def generate_term_documented_matrix(self):
         logging.info("Calculating Term Documented Matrix")
+        # Reading the method file to get all the terms
         with open(self.method_file, "r") as method_file_open:
             contents = [(line.rstrip()).split() for line in method_file_open]
             content_flat = (reduce(lambda x, y: x+y, contents))
         self.terms = list(set(content_flat))
+        # Making the term documented matrix
         term_documented_matrix = np.zeros((len(contents), len(self.terms))).astype(int)
         for term_matrix_row, single_content in enumerate(contents):
             for single_term in single_content:
@@ -45,11 +49,13 @@ class Vsm:
 
     def normalize_term_documented_matrix(self):
         logging.info("Normalizing the Term Documented Matrix")
+        # Normalize the term documented matrix
         self.normalized_term_documented_matrix = (self.term_documented_matrix.T/self.term_documented_matrix.max(axis=1)).T
 
     def compute_document_frequency(self):
         logging.info("Computing document frequency")
         document_frequency = np.zeros(len(self.terms)).astype(int)
+        # Look for the whole document for document frequency of a term.
         for index, single_term in enumerate(self.terms):
             for single_document_line in self.method_line:
                 if single_term in single_document_line:
@@ -58,18 +64,22 @@ class Vsm:
 
     def compute_inverse_document_frequency(self):
         logging.info("Computing inverse document frequency")
+        # Computing inverse
         inverse_document_frequency = np.full(len(self.terms), len(self.method_line)) / self.document_frequency
         self.inverse_document_frequency = np.log(inverse_document_frequency)
 
     def generate_tf_idf_weighted_matrix(self):
         logging.info("Generating TF-IDF weighted matrix")
+        # GEnerating tf_idf matrix
         self.tf_idf_weighted_matrix = self.normalized_term_documented_matrix * self.inverse_document_frequency
 
     def generate_vector_from_query(self):
         logging.info("Creating vector from query")
+        # REading the query file
         with open(self.query_file, "r") as query_file_open:
             query_content = [(line.rstrip()).split() for line in query_file_open]
         query_vector = np.zeros((len(query_content), len(self.terms))).astype(int)
+        # Making query as vector
         for matrix_row, single_content in enumerate(query_content):
             for single_term in single_content:
                 try:
@@ -82,6 +92,7 @@ class Vsm:
     def compute_cosine_similarity(self):
         logging.info("Computing cosine similarities")
         cosine_similarities = np.zeros((len(self.query_vector), len(self.tf_idf_weighted_matrix)))
+        # Cosine similarites of query and document
         for query_index, single_query_vector in enumerate(self.query_vector):
             for method_index, single_method_line in enumerate(self.tf_idf_weighted_matrix):
                 cosine_similarities[query_index][method_index] = np.dot(single_method_line, single_query_vector) /\
@@ -93,7 +104,7 @@ class Vsm:
         logging.info("Generating the CSV file containing the effectiveness data")
         # opening the effectiveness csv file
         try:
-            file = open("effectiveness_file.csv", "w")
+            file = open("VSM_Effectiveness.csv", "w")
             file.write("FeatureID\tGoldSet MethodID Position\tGoldSetMethodID\tVSM GoldSetMethodID Rank - All Ranks\t"
                        "VSM GoldSetMethodID Rank - Best Rank\n")
         except Exception as e:
@@ -133,6 +144,8 @@ class Vsm:
             # write in the file
             for index, single_method_id_details in enumerate(feature_details):
                 if index == 0:
+                    if single_method_id_details[0] == "-1":
+                        best_rank = ""
                     string_to_write = str(feature_id) + "\t" + single_method_id_details[0] + "\t" + \
                                       single_method_id_details[1] + "\t" + \
                                       single_method_id_details[2] + "\t" + str(best_rank)
@@ -145,6 +158,6 @@ class Vsm:
 
 
 if __name__ == '__main__':
-    vsm = Vsm(input_file_dir="../docs/Homework4AdditionalFiles/jEdit4.3/")
+    vsm = Vsm(input_file_dir="input_file/jEdit4.3")
     vsm.effectiveness_for_features()
 
