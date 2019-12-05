@@ -159,7 +159,6 @@ class Vsm:
 
 
 if __name__ == '__main__':
-    print(os.path.dirname(os.path.realpath(__file__))+"/input_file/jEdit4.3")
     vsm = Vsm(input_file_dir=os.path.dirname(os.path.realpath(__file__))+"/input_file/jEdit4.3")
     vsm.effectiveness_for_features()
 
