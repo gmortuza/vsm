@@ -12,7 +12,7 @@ RUN apt-get install -y python3 python3-pip
 # install git
 RUN apt-get install -y git
 
-RUN useradd -ms /bin/bash new1
+RUN useradd -ms /bin/bash new2
 
 #vUSER jupyter
 RUN git clone https://github.com/gmortuza/vsm.git
