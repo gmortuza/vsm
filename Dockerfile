@@ -19,3 +19,5 @@ RUN apt-get install git
 RUN git clone git@github.com:gmortuza/vsm.git
 
 CMD [ "python", "vsm/src/vsm.py" ]
+
+CMD ["jupyter", "notebook", "--ip=*"]
