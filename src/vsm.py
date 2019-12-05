@@ -2,6 +2,7 @@ import numpy as np
 from functools import reduce
 import logging
 import sys
+import os
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 
